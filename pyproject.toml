@@ -3,7 +3,7 @@ name = "dump-truck"
 version = "0.1.0"
 description = "This is dumping ground!"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
     "ipykernel>=7.1.0",
     "langchain>=1.1.0",
