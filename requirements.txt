@@ -21,3 +21,5 @@ notebook
 langchain-tavily
 trustcall
 langgraph-cli[inmem]
+langchain-google-genai
+langchain-groq
