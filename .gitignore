@@ -1,2 +1,3 @@
 # Ignore env files anywhere in the repo
 .env*
+.langgraph_api*
