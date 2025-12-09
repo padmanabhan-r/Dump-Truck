@@ -639,6 +639,7 @@ dependencies = [
     { name = "langchain-tavily" },
     { name = "langchain-text-splitters" },
     { name = "langgraph" },
+    { name = "langgraph-api" },
     { name = "langgraph-checkpoint-sqlite" },
     { name = "langgraph-cli", extra = ["inmem"] },
     { name = "langgraph-prebuilt" },
@@ -676,6 +677,7 @@ requires-dist = [
     { name = "langchain-tavily", specifier = ">=0.2.13" },
     { name = "langchain-text-splitters", specifier = ">=1.0.0" },
     { name = "langgraph", specifier = ">=1.0.4" },
+    { name = "langgraph-api", specifier = "==0.5.36" },
     { name = "langgraph-checkpoint-sqlite", specifier = ">=3.0.0" },
     { name = "langgraph-cli", extras = ["inmem"], specifier = ">=0.4.7" },
     { name = "langgraph-prebuilt", specifier = ">=1.0.5" },
@@ -1716,7 +1718,7 @@ wheels = [
 
 [[package]]
 name = "langgraph-api"
-version = "0.5.32"
+version = "0.5.36"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "cloudpickle" },
@@ -1746,9 +1748,9 @@ dependencies = [
     { name = "uvicorn" },
     { name = "watchfiles" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/06/72/7dbfa39c952cd29336ea0c955af93d1c48579a13d9cd601f4ff201cbf3a2/langgraph_api-0.5.32.tar.gz", hash = "sha256:0c12c4aad015d2e70b3af8228a356aaa6eb19b369ffecca65911d3df9b9c1f4d", size = 370609, upload-time = "2025-12-06T02:28:44.179Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f7/c9/da81c3b5395e741d27d1bb1144aa874bad880921ea181f2bc9807020176f/langgraph_api-0.5.36.tar.gz", hash = "sha256:98b19857fdc27e654a38a065a82d6cdc065a34642708a3366c70865d54a9de4a", size = 382487, upload-time = "2025-12-09T15:27:22.049Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/65/9c/0a5744dd77ea9f7410844b2ad5bbacc3b13d47751d7935bb20589ee0d919/langgraph_api-0.5.32-py3-none-any.whl", hash = "sha256:2b00db4786af6fa310e54431c26ed9ad2968617b10aa57495a52726303799b75", size = 297398, upload-time = "2025-12-06T02:28:42.67Z" },
+    { url = "https://files.pythonhosted.org/packages/b1/fb/24de3e61d37eef03cdc2c02dfe46fb6b248f5df1f2fc1cbe2cff49ac4817/langgraph_api-0.5.36-py3-none-any.whl", hash = "sha256:2b201bd457f481cfc8527458722196e955ec541ae03c12011377286bb7c28852", size = 310031, upload-time = "2025-12-09T15:27:20.883Z" },
 ]
 
 [[package]]

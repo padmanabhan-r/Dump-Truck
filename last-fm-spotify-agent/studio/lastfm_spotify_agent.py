@@ -55,19 +55,19 @@ from pprint import pprint
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 
 
-# from langchain_google_genai import ChatGoogleGenerativeAI
-# llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
+from langchain_google_genai import ChatGoogleGenerativeAI
+llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
 
 # from langchain_groq import ChatGroq
 # llm = ChatGroq(model="openai/gpt-oss-120b", temperature=0)
 
-from langchain_deepseek import ChatDeepSeek
-llm = ChatDeepSeek(
-    model="deepseek/deepseek-v3.2",
-    api_key=os.getenv("OPENROUTER_API_KEY"),
-    api_base="https://openrouter.ai/api/v1",
-    extra_body={"reasoning": {"enabled": True}},
-)
+# from langchain_deepseek import ChatDeepSeek
+# llm = ChatDeepSeek(
+#     model="deepseek/deepseek-v3.2",
+#     api_key=os.getenv("OPENROUTER_API_KEY"),
+#     api_base="https://openrouter.ai/api/v1",
+#     extra_body={"reasoning": {"enabled": True}},
+# )
 
 from lastfm_spotify_tools import (  # type: ignore
     get_lastfm_user_info,

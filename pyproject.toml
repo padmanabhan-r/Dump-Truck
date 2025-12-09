@@ -20,6 +20,7 @@ dependencies = [
     "langchain-tavily>=0.2.13",
     "langchain-text-splitters>=1.0.0",
     "langgraph>=1.0.4",
+    "langgraph-api==0.5.36",
     "langgraph-checkpoint-sqlite>=3.0.0",
     "langgraph-cli[inmem]>=0.4.7",
     "langgraph-prebuilt>=1.0.5",
