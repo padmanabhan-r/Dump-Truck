@@ -204,6 +204,44 @@ def get_track_info(artist_name: str, track_name: str) -> Dict[str, Any]:
         }
     )
 
+def get_lastfm_user_top_artists(
+    username: str,
+    period: str = "overall",
+    limit: int = 50,
+    page: int = 1,
+) -> Dict[str, Any]:
+    """
+    Get the top artists listened to by a Last.fm user.
+
+    This wraps the Last.fm "user.getTopArtists" method.
+
+    Args:
+        username:
+            The Last.fm username to look up.
+        period:
+            Time period for top artists. Options: "overall", "7day", 
+            "1month", "3month", "6month", "12month". Defaults to "overall".
+        limit:
+            Maximum number of artist results (1–50). Defaults to 50.
+        page:
+            Page number to fetch. Defaults to 1.
+
+    Returns:
+        The Last.fm JSON response containing top artists with playcount.
+
+    Raises:
+        Exception: If the request fails or Last.fm returns an error.
+    """
+    return _lastfm_get(
+        {
+            "method": "user.getTopArtists",
+            "user": username,
+            "period": period,
+            "limit": limit,
+            "page": page,
+        }
+    )
+
 
 # ---------------------------------------------------------------------------
 # Public Spotify functions
@@ -311,3 +349,60 @@ def get_artist_albums(
             "include_groups": include_groups,
         },
     )
+
+def search_artist_by_name(artist_name: str, limit: int = 10) -> Dict[str, Any]:
+    """
+    Search for Spotify artists by name.
+
+    This uses the Spotify "/search" endpoint with artist type.
+
+    Args:
+        artist_name:
+            Name of the artist to search for (e.g., "Metallica", "Bon Jovi").
+        limit:
+            Maximum number of results to return (1–50). Defaults to 10.
+
+    Returns:
+        The Spotify JSON search response containing matching artists.
+
+    Raises:
+        Exception: If token acquisition or the HTTP request fails.
+    """
+    return _spotify_get(
+        "/search",
+        {
+            "q": artist_name,
+            "type": "artist",
+            "limit": limit,
+        },
+    )
+
+
+def get_artist_details_by_name(artist_name: str) -> Optional[Dict[str, Any]]:
+    """
+    Get detailed information for a Spotify artist by name.
+
+    This is a convenience function that searches for the artist by name,
+    selects the top match, and returns full details including followers,
+    popularity, and genres.
+
+    Args:
+        artist_name:
+            Name of the artist (e.g., "Metallica", "Bon Jovi").
+
+    Returns:
+        The Spotify JSON response with artist details (followers, popularity,
+        genres), or None if no artist is found.
+
+    Raises:
+        Exception: If token acquisition or HTTP requests fail.
+    """
+    search_results = search_artist_by_name(artist_name, limit=1)
+    
+    artists = search_results.get("artists", {}).get("items", [])
+    if not artists:
+        return None
+    
+    # Get the first (best) match
+    artist_id = artists[0]["id"]
+    return get_artist_details(artist_id)
