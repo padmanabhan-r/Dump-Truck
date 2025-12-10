@@ -219,8 +219,7 @@ def get_lastfm_user_top_artists(
         username:
             The Last.fm username to look up.
         period:
-            Time period for top artists. Options: "overall", "7day", 
-            "1month", "3month", "6month", "12month". Defaults to "overall".
+            Time period (overall, 7day, 1month, 3month, 6month, or 12month).
         limit:
             Maximum number of artist results (1–50). Defaults to 50.
         page:

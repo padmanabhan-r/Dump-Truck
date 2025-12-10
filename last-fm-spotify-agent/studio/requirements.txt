@@ -6,3 +6,4 @@ langchain-openai
 langchain-google-genai
 langchain-groq
 langchain-deepseek
+langchain-ollama
