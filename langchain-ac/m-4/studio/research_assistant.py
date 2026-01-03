@@ -13,7 +13,7 @@ from langgraph.graph import END, MessagesState, START, StateGraph
 
 ### LLM
 
-llm = ChatOpenAI(model="gpt-4o", temperature=0) 
+llm = ChatOpenAI(model="MiniMax-M2.1", temperature=0) 
 
 ### Schema 
 
