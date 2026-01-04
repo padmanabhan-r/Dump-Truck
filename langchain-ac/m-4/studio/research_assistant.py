@@ -1,4 +1,5 @@
 import operator
+import os
 from pydantic import BaseModel, Field
 from typing import Annotated, List
 from typing_extensions import TypedDict
@@ -6,14 +7,24 @@ from typing_extensions import TypedDict
 from langchain_community.document_loaders import WikipediaLoader
 from langchain_tavily import TavilySearch  # updated 1.0
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage, get_buffer_string
-from langchain_openai import ChatOpenAI
-
 from langgraph.constants import Send
 from langgraph.graph import END, MessagesState, START, StateGraph
 
 ### LLM
 
-llm = ChatOpenAI(model="MiniMax-M2.1", temperature=0) 
+# from langchain_google_genai import ChatGoogleGenerativeAI
+# from langchain_openai import ChatOpenAI
+# from langchain_groq import ChatGroq
+from langchain_deepseek import ChatDeepSeek
+# model = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
+# model = ChatOpenAI(model="gpt-3.5-turbo",temperature=0)
+# model = ChatGroq(model="openai/gpt-oss-120b", temperature=0)
+model = ChatDeepSeek(
+    model="deepseek/deepseek-chat-v3.1",
+    api_key=os.getenv("OPENROUTER_API_KEY"),
+    api_base="https://openrouter.ai/api/v1",
+    extra_body={"reasoning": {"enabled": True}},
+)
 
 ### Schema 
 

@@ -3,8 +3,8 @@ from typing import Annotated
 from typing_extensions import TypedDict
 
 from pydantic import BaseModel
+import os
 
-from langchain_openai import ChatOpenAI 
 
 from langgraph.constants import Send
 from langgraph.graph import END, StateGraph, START
@@ -14,8 +14,22 @@ subjects_prompt = """Generate a list of 3 sub-topics that are all related to thi
 joke_prompt = """Generate a joke about {subject}"""
 best_joke_prompt = """Below are a bunch of jokes about {topic}. Select the best one! Return the ID of the best one, starting 0 as the ID for the first joke. Jokes: \n\n  {jokes}"""
 
+
+# from langchain_google_genai import ChatGoogleGenerativeAI
+# from langchain_openai import ChatOpenAI
+# from langchain_groq import ChatGroq
+from langchain_deepseek import ChatDeepSeek
+
 # LLM
-model = ChatOpenAI(model="MiniMax-M2.1", temperature=0) 
+# model = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
+# model = ChatOpenAI(model="gpt-3.5-turbo",temperature=0)
+# model = ChatGroq(model="openai/gpt-oss-120b", temperature=0)
+model = ChatDeepSeek(
+    model="deepseek/deepseek-chat-v3.1",
+    api_key=os.getenv("OPENROUTER_API_KEY"),
+    api_base="https://openrouter.ai/api/v1",
+    extra_body={"reasoning": {"enabled": True}},
+)
 
 # Define the state
 class Subjects(BaseModel):
